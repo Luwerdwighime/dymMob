@@ -4,12 +4,12 @@
  */
 
 #pragma once
-#include <cstdlib>              // Для std::exit()
-#include <iostream>             // Для std::cerr
-#include <getopt.h>             // Для getopt_long(), optarg, optind
-#include <string>               // Для std::string
-#include "config.hpp"           // Константы
-#include "lib/inih/INIReader.h" // Анализатор ini-шек
+#include <cstdlib>                // Для std::exit()
+#include <iostream>               // Для std::cerr
+#include <getopt.h>               // Для getopt_long(), optarg, optind
+#include <string>                 // Для std::string
+#include "config.hpp"             // Константы
+#include "lib/inih/INIReader.hpp" // Анализатор ini-шек
 
 /**
  * @brief Класс конфигурации
