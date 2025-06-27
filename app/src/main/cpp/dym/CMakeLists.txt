@@ -1,25 +1,24 @@
 cmake_minimum_required(VERSION 3.20)
 set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(dym LANGUAGES C CXX)
 
-set(H_FILES
-  src/config.hpp
-  src/Cfg.hpp
-  src/Fs.hpp
-  src/User.hpp
-  src/Yt.hpp
-  src/lib/inih/ini.h
-  src/lib/inih/INIReader.hpp
+add_library(inih
+  lib/inih/ini.c
+  lib/inih/INIReader.cpp
 )
-set(C_FILES src/lib/inih/ini.c)
-set_source_files_properties(${C_FILES} PROPERTIES LANGUAGE C)
-set(CPP_FILES
-  src/main.cpp
-  src/Cfg.cpp
-  src/Fs.cpp
-  src/User.cpp
-  src/Yt.cpp
-  src/lib/inih/INIReader.cpp
+
+target_include_directories(inih PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/inih
 )
-add_executable(dym ${H_FILES} ${C_FILES} ${CPP_FILES})
+
+add_executable(dym
+  main.cpp
+)
+
+target_include_directories(dym PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+target_link_libraries(dym PRIVATE inih)
 
