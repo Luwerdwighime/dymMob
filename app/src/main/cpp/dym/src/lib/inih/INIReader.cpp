@@ -13,7 +13,7 @@
 #include <cctype>
 #include <cstdlib>
 #include "ini.h"
-#include "INIReader.h"
+#include "INIReader.hpp"
 
 using std::string;
 
