@@ -17,7 +17,7 @@ jobs:
         run: git clone --depth=1 https://github.com/Luwerdwighime/dym.git external/dym
 
       - name: ⚙️ Устанавливаем JDK и Android SDK
-        uses: android-actions/setup-android@v4
+        uses: android-actions/setup-android@v3
         with:
           api-level: 34
 
