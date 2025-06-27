@@ -11,13 +11,13 @@ jobs:
 
     steps:
       - name: ⬇️ Клонируем текущий проект
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 📥 Клонируем внешний репозиторий dym
         run: git clone --depth=1 https://github.com/Luwerdwighime/dym.git external/dym
 
       - name: ⚙️ Устанавливаем JDK и Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
         with:
           api-level: 34
 
@@ -47,7 +47,7 @@ jobs:
         run: ./gradlew assembleDebug
 
       - name: 🚀 Загружаем .apk как артефакт
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dymMob-debug.apk
           path: app/build/outputs/apk/debug/app-debug.apk
