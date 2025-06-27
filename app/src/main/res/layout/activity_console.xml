@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/console_screen"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:padding="16dp">
+
+  <TextView
+    android:id="@+id/console_output"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:textColor="#00FF00"
+    android:background="#000000"
+    android:padding="8dp"
+    android:textSize="12sp"
+    android:scrollbars="vertical"
+    android:textIsSelectable="true"
+    android:typeface="monospace"
+    android:text=">>> Ожидание запуска..." />
+
+  <Button
+    android:id="@+id/btn_download_another"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:enabled="false"
+    android:text="Скачать другой URL"
+    android:layout_marginTop="12dp" />
+</LinearLayout>
+

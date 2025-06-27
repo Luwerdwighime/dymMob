@@ -1,0 +1,4 @@
+// dymMob/settings.gradle
+rootProject.name = "dymMob"
+include ':app'
+
