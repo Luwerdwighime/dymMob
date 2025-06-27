@@ -12,7 +12,13 @@ android {
     minSdk 24
     targetSdk 34
     versionCode 1
-    versionName "1.0"
+    versionName "1.0.0"
+
+    externalNativeBuild {
+      cmake {
+        cppFlags "-std=c++23"
+      }
+    }
 
     ndk {
       abiFilters 'armeabi-v7a', 'arm64-v8a'
