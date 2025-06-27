@@ -3,22 +3,19 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(dym LANGUAGES C CXX)
 
-add_library(inih
-  lib/inih/ini.c
-  lib/inih/INIReader.cpp
+set(DYM_SOURCES
+  src/main.cpp
+  src/Cfg.cpp
+  src/Fs.cpp
+  src/User.cpp
+  src/Yt.cpp
+  src/lib/inih/INIReader.cpp
+  src/lib/inih/ini.c
 )
 
-target_include_directories(inih PUBLIC
-  ${CMAKE_CURRENT_SOURCE_DIR}/lib/inih
-)
-
-add_executable(dym
-  main.cpp
-)
+add_executable(dym ${DYM_SOURCES})
 
 target_include_directories(dym PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/lib/inih
 )
-
-target_link_libraries(dym PRIVATE inih)
-
