@@ -1,4 +1,4 @@
-name: Build APK with generated gradlew
+name: Build dymMob APK
 
 on:
   push:
@@ -10,43 +10,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ⬇️ Клонируем текущий проект
-        uses: actions/checkout@v4
+      - name: ⬇️ Checkout проекта
+        uses: actions/checkout@v3
 
-      - name: 📥 Клонируем внешний репозиторий dym
-        run: git clone --depth=1 https://github.com/Luwerdwighime/dym.git external/dym
-
-      - name: ⚙️ Устанавливаем JDK и Android SDK
+      - name: ⚙️ Установка Android SDK и JDK
         uses: android-actions/setup-android@v3
         with:
           api-level: 34
 
-      - name: 🔨 Устанавливаем make и cmake
-        run: sudo apt-get update && sudo apt-get install -y cmake make clang libinih-dev yt-dlp
+      - name: 🔧 Установка CMake и make
+        run: sudo apt-get update && sudo apt-get install -y cmake make
 
-      - name: 🧱 Сборка dym через CMake
-        working-directory: external/dym
+      - name: 🔨 Сборка dym из исходников
+        working-directory: app/src/main/cpp/dym
         run: |
-          mkdir build && cd build
+          mkdir -p build && cd build
           cmake ..
           make -j$(nproc)
 
-      - name: 📦 Кладём dym и config.ini в assets/
+      - name: 📦 Копируем dym и config.ini в assets/
         run: |
           mkdir -p app/src/main/assets
-          cp external/dym/build/dym app/src/main/assets/
-          cp external/dym/config.sebos.ini app/src/main/assets/
+          cp app/src/main/cpp/dym/build/dym app/src/main/assets/
+          cp app/src/main/cpp/dym/config.ini app/src/main/assets/
 
-      - name: ⚙️ Генерим Gradle Wrapper
+      - name: ⚙️ Генерация Gradle Wrapper
         run: gradle wrapper --gradle-version 8.2
 
       - name: 🧙 Делаем gradlew исполняемым
         run: chmod +x gradlew
 
-      - name: 🧪 Собираем .apk
+      - name: 🧪 Сборка .apk
         run: ./gradlew assembleDebug
 
-      - name: 🚀 Загружаем .apk как артефакт
+      - name: 🚀 Загрузка .apk как артефакт
         uses: actions/upload-artifact@v4
         with:
           name: dymMob-debug.apk
