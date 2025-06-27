@@ -22,7 +22,7 @@ jobs:
           api-level: 34
 
       - name: 🔨 Устанавливаем make и cmake
-        run: sudo apt-get update && sudo apt-get install -y cmake make clang libinih yt-dlp
+        run: sudo apt-get update && sudo apt-get install -y cmake make clang libinih-dev yt-dlp
 
       - name: 🧱 Сборка dym через CMake
         working-directory: external/dym
