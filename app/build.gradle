@@ -28,6 +28,7 @@ android {
     release {
       storeFile file("dymMob-release.keystore")
       storePassword "1234567"
+      keyPassword ""
       keyAlias "dymmobkey"
     }
   }
