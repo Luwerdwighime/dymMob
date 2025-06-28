@@ -38,8 +38,12 @@ jobs:
       - name: 🧙 Делаем gradlew исполняемым
         run: chmod +x gradlew
 
+      - name: 🔐 Распаковываем keystore
+        run: |
+          echo "${{ secrets.SIGNING_KEYSTORE_BASE64 }}" | base64 -d > dymMob-release.keystore
+
       - name: 🧪 Сборка .apk
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleRelease
 
       - name: 🚀 Загрузка .apk как артефакт
         uses: actions/upload-artifact@v4
