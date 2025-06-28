@@ -44,6 +44,6 @@ jobs:
       - name: 🚀 Загрузка .apk как артефакт
         uses: actions/upload-artifact@v4
         with:
-          name: dymMob-debug.apk
+          name: dymMob.apk
           path: app/build/outputs/apk/release/app-release.apk
 
