@@ -27,8 +27,8 @@ android {
   signingConfigs {
     release {
       storeFile file("dymMob-release.keystore")
-      storePassword System.getenv("1234567")
-      keyAlias System.getenv("dymmobkey")
+      storePassword "1234567"
+      keyAlias "dymmobkey"
     }
   }
 
