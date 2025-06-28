@@ -15,8 +15,6 @@ jobs:
 
       - name: ⚙️ Установка Android SDK и JDK
         uses: android-actions/setup-android@v3
-        with:
-          api-level: 34
 
       - name: 🔧 Установка CMake и make
         run: sudo apt-get update && sudo apt-get install -y cmake make
