@@ -30,7 +30,7 @@
 
       <ImageButton
         android:id="@+id/paste_button"
-        android:src="@android:drawable/paste"
+        android:src="@drawable/paste"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
